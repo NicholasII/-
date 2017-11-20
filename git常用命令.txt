@@ -1,0 +1,59 @@
+﻿1、将远端仓库代码pull下：
+$ git pull 远程主机名 远程分支名：本地分支名；
+$ git push 远程主机名 本地分支名: 远程分支名；
+
+2、clone远程指定分支
+git clone -b <branch> <remote_repo>
+
+3、本地分支跟踪的远程分支
+git branch -vv
+git branch -a
+git branch -r
+
+4、删除分支
+git branch -d xxx
+
+5、创建分支
+git branch xxx
+git checkout -b xxx创建并切换
+
+6、删除远程分支
+git branch -r -d origin/branch-name  
+
+7、创建远程分支
+git push origin localname:originname
+
+8、建立本地分支与远程分支的连接
+git branch --set-upstream-to=origin/<branch>  <branch>
+
+9、查看远程库信息，使用git remote -v；
+
+10、版本回退
+git reset --hard HEAD^    回退到上一个版本，一个"^"代表一个版本
+git reset --hard 版本号   回退到某个版本
+git reset --hard HEAD~100 往上回退100个版本
+
+11、忽略/恢复已跟踪文件的改动
+git update-index --assume-unchanged FILENAEM 
+git update-index --no-assume-unchanged FILENAME
+
+12、删除服务器对某个文件的管理（在git服务器上就会删除这个文件，从而取消对这个文件的追踪）
+git rm filename --cached
+
+13、删除远程分支和tag
+git push origin --delete <branchName>
+git push origin --delete tag <tagname>
+
+14、撤销某个文件的修改
+未add  git checkout -- file
+已add  git reset HEAD file
+已commit  git reset --hard HEAD^  在Git中，用HEAD表示当前版本，上一个版本就是HEAD^，上上一个版本就是HEAD^^，当然往上100个版本写成HEAD~100。
+
+
+15、将已有项目提交到git
+touch README.md //新建说明文件
+git init //在当前项目目录中生成本地git管理,并建立一个隐藏.git目录
+git add . //添加当前目录中的所有文件到索引
+git commit -m "first commit" //提交到本地源码库，并附加提交注释
+git remote add origin 粘贴复制的地址 //添加到远程项目，别名为origin
+git push -u origin master //把本地源码库push到github 别名为origin的远程项目中，确认提交
